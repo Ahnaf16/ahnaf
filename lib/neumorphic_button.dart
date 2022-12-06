@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BoxShadow, BoxDecoration;
 import 'package:flutter/services.dart';
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class NeumorphicContainer extends StatefulWidget {
   const NeumorphicContainer({
@@ -118,13 +119,11 @@ class _NeumorphicContainerState extends State<NeumorphicContainer> {
         onEnter: entered.call(),
         onExit: exit.call(),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 120),
           curve: Curves.easeInOut,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           decoration: BoxDecoration(
-            color: widget.selected
-                ? Theme.of(context).colorScheme.primary.withOpacity(.1)
-                : Colors.grey[300],
+            color: Colors.grey[300],
             borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
@@ -132,12 +131,14 @@ class _NeumorphicContainerState extends State<NeumorphicContainer> {
                 offset: getOffset(false),
                 blurRadius: 15,
                 spreadRadius: 1,
+                inset: widget.selected,
               ),
               BoxShadow(
                 color: Colors.white,
                 offset: getOffset(true),
                 blurRadius: 15,
                 spreadRadius: 1,
+                inset: widget.selected,
               ),
             ],
           ),
