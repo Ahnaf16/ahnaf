@@ -27,6 +27,9 @@ class NeumorphicContainer extends StatefulWidget {
 }
 
 class _NeumorphicContainerState extends State<NeumorphicContainer> {
+  late bool disabled;
+  late ButtonState state = ButtonState.none;
+
   Function(TapDownDetails)? tapDown() {
     if (!disabled) {
       return (details) {
@@ -71,9 +74,6 @@ class _NeumorphicContainerState extends State<NeumorphicContainer> {
     }
     return null;
   }
-
-  late bool disabled;
-  late ButtonState state = ButtonState.none;
 
   Function()? tap() {
     if (widget.selectableMode) {
